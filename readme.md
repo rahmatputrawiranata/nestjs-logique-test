@@ -1,6 +1,9 @@
-# Project Name
+# LOGIQUE TEST
 
-LOGIQUE TEST
+## Stack
+- NestJS
+- MongoDB
+- Docker
 
 ## Prerequisites
 - Docker
