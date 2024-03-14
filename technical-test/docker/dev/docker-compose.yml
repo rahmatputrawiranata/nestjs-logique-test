@@ -9,15 +9,6 @@ volumes:
   mongodb_data:
 
 services:
-  app:
-    build: .
-    networks:
-      - logique_app
-    ports:
-      - "3000:3000"
-    depends_on:
-      - mongodb
-      - rabbitmq
   mongodb:
     image: mongo
     volumes:
