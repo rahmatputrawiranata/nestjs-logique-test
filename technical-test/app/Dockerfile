@@ -1,27 +1,31 @@
-# Use the official Node.js 14 image as the base image
-FROM node:20-alpine
+# Use an official Node.js image as the base
+FROM node:20-alpine as web-app-build
 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files to the working directory
-COPY package*.json yarn.lock ./
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
+# Copy package.json and package-lock.json and yarn lock to the working directory
+COPY package*.json ./
+COPY yarn.lock ./
 
-# Install all dependencies, including devDependencies
-RUN yarn install
+# Install dependencies
+RUN yarn
 
-# Copy the source code to the working directory
+RUN yarn migrate-mongo up
+
+# Copy the current directory contents into the container at /app
 COPY . .
 
-# Build the Nest.js application
 RUN yarn build
 
-# Install the dependencies
-RUN yarn install --production
+# Run the app using nginx
+FROM nginx:1.25-alpine-perl
 
-# Expose the port on which the Nest.js application will run
-EXPOSE 3000
+# Copy the build files to the nginx server
+COPY --from=web-app-build /app/dist /usr/share/nginx/html
 
-# Start the Nest.js application
-CMD ["yarn", "start:prod"]
+# Expose the port the app runs on
+EXPOSE 80
