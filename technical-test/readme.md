@@ -39,6 +39,13 @@ LOGIQUE TEST
     yarn mongo-migrate up
     ```
 
+7. Navigate to the project directory `nestjs-logique-test/technical-test/app/` and run the app
+    ```bash
+    yarn start:dev
+    ```
+
+8. Access the project in your browser at `http://localhost:port`.
+
 
 
 ## Running the Project on production environtment
@@ -50,17 +57,3 @@ LOGIQUE TEST
     ```bash
     ./do.sh
     ```
-
-## Running the Project on development environtment
-
-1. Navigate to the `nestjs-logique-test/technical-test/docker` folder:
-    ```bash
-    cd dev
-    ```
-
-2. Start the containers:
-    ```bash
-    docker-compose up -d
-    ```
-
-3. Access the project in your browser at `http://localhost:port`.
