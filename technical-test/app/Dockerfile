@@ -18,7 +18,7 @@ COPY . .
 RUN yarn build
 
 # Install the dependencies
-RUN yarn install --production
+RUN yarn install
 
 # Expose the port on which the Nest.js application will run
 EXPOSE 3000

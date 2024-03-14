@@ -1,8 +1,6 @@
 
 cd technical-test/app
 
-rm -rf node_modules
-
 rm -rf dist
 
 rm -rf uploads
@@ -15,8 +13,4 @@ docker-compose build
 
 docker-compose up -d
 
-cd ../app
-
-yarn install
-
-yarn migrate-mongo up
+docker exec -it logique-app-app-1 yarn migrate-mongo up

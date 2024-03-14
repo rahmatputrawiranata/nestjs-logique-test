@@ -1,5 +1,7 @@
 # Project Name
 
+LOGIQUE TEST
+
 ## Prerequisites
 - Docker
 - Docker Compose
@@ -8,13 +10,17 @@
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/rahmatputrawiranata/nestjs-logique-test
     ```
 
-2. Navigate to the project directory:
+2. Navigate to the `nestjs-logique-test/technical-test/docker/dev` folder
+
+3. Start the containers:
     ```bash
-    cd your-repo
+    docker-compose up -d
     ```
+
+4. Navigate to the project directory `nestjs-logique-test/technical-test/app`
 
 3. Copy the environment variables file:
     ```bash
@@ -23,25 +29,38 @@
 
 4. Update the `.env` file with the necessary configuration values.
 
-## Running the Project
-
-1. Navigate to the `docker` folder:
+5. Install dependencies:
     ```bash
-    cd docker
+    yarn
     ```
 
-2. Build the Docker images:
+6. Run migration
     ```bash
-    docker-compose build
+    yarn mongo-migrate up
     ```
 
-3. Start the containers:
+
+
+## Running the Project on production environtment
+
+1. Navigate to the `root folder`
+
+2. Run build command
+
+    ```bash
+    ./do.sh
+    ```
+
+## Running the Project on development environtment
+
+1. Navigate to the `nestjs-logique-test/technical-test/docker` folder:
+    ```bash
+    cd dev
+    ```
+
+2. Start the containers:
     ```bash
     docker-compose up -d
     ```
 
-4. Access the project in your browser at `http://localhost:port`.
-
-## Stopping the Project
-
-To stop the project and remove the containers, run the following command in the `docker` folder:
+3. Access the project in your browser at `http://localhost:port`.
