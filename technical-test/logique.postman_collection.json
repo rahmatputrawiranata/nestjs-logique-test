@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "4cf8aec4-1ff2-4fe6-898c-d4233042e1f2",
+		"name": "logique",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "budi",
+							"type": "default"
+						},
+						{
+							"key": "address",
+							"value": "asdasdasd",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "asvvdxx@asdad.cbb",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "default"
+						},
+						{
+							"key": "photos",
+							"type": "file",
+							"src": [
+								"/C:/Users/rahma/Pictures/OIP.jpeg",
+								"/C:/Users/rahma/Pictures/Screenshot_1.png"
+							]
+						},
+						{
+							"key": "creditcard_type",
+							"value": "visa",
+							"type": "default"
+						},
+						{
+							"key": "creditcard_name",
+							"value": "budi",
+							"type": "default"
+						},
+						{
+							"key": "creditcard_number",
+							"value": "123123123123",
+							"type": "default"
+						},
+						{
+							"key": "creditcard_cvv",
+							"value": "123",
+							"type": "default"
+						},
+						{
+							"key": "creditcard_expired",
+							"value": "11/33",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/users/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "budi sentosa",
+							"type": "default"
+						},
+						{
+							"key": "address",
+							"value": "asdasdasd",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "asvvdxx@asdad.cbb",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "photos",
+							"type": "file",
+							"src": [
+								"/C:/Users/rahma/Pictures/OIP.jpeg",
+								"/C:/Users/rahma/Pictures/Screenshot_1.png"
+							],
+							"disabled": true
+						},
+						{
+							"key": "creditcard_type",
+							"value": "visa",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "creditcard_name",
+							"value": "budi",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "creditcard_number",
+							"value": "123123123123",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "creditcard_cvv",
+							"value": "123",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "creditcard_expired",
+							"value": "11/33",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/users",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/users/list",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user detail by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "{{key}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/users/list",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "key",
+			"value": "HiJhvL$T27@1u^%u86g"
+		}
+	]
+}
