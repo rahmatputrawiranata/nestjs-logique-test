@@ -14,10 +14,9 @@ services:
     networks:
       - logique_app
     ports:
-      - "3000:3000"
+      - "80:80"
     depends_on:
       - mongodb
-      - rabbitmq
   mongodb:
     image: mongo
     volumes:
