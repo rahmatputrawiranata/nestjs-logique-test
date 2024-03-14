@@ -10,7 +10,7 @@ volumes:
 
 services:
   app:
-    build: .
+    build: ../app
     networks:
       - logique_app
     ports:
