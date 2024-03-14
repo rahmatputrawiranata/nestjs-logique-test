@@ -81,9 +81,32 @@ export class UsersController {
 
     }
 
-    @Patch('user')
-    async update(@Body() body) {
+    @Patch()
+    @UseInterceptors(FilesInterceptor('photos', 10, {
+        storage: multer.diskStorage({
+            destination: './uploads/user-photos',
+            filename: (req, file, cb) => {
+                const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('')
+                const extention = file.originalname.split('.').pop()
+                return cb(null, `${randomName}.${extention}`)
+            }
+        })
+    }))
+    async update(@UploadedFiles(
+        
+
+    ) photos: Array<Express.Multer.File>, @Body() body) {
         const { user_id, ...data } = body;
-        return await this.usersService.update(user_id, data)
+
+        console.log(body)
+        if(!user_id) {
+            throw new HttpException({
+                error: 'Please provide user_id fields'
+            }, 400)
+        }
+        return await this.usersService.update(user_id, {
+            ...data,
+            photos: photos.map(photo => photo.path).length ? photos.map(photo => photo.path) : undefined
+        })
     }
 }
