@@ -7,7 +7,6 @@ import {
   ParseFilePipeBuilder,
   Patch,
   Post,
-  UploadedFile,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
