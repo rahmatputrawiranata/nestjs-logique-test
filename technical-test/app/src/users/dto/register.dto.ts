@@ -1,21 +1,4 @@
-import { Type } from 'class-transformer';
-import {
-  ArrayNotEmpty,
-  IsArray,
-  IsEmail,
-  IsNotEmpty,
-  IsNumber,
-  IsString,
-  ValidateNested,
-} from 'class-validator';
-
-export class FileDTO {
-  @IsNotEmpty()
-  filename: string;
-
-  @IsNotEmpty()
-  path: string;
-}
+import { IsArray, IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class RegisterDTO {
   @IsNotEmpty()
