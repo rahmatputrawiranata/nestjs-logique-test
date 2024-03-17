@@ -1,12 +1,25 @@
 {
 	"info": {
-		"_postman_id": "4cf8aec4-1ff2-4fe6-898c-d4233042e1f2",
+		"_postman_id": "c1e52fc5-522c-4f4e-8e10-66310f78a06d",
 		"name": "logique",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4956640"
 	},
 	"item": [
 		{
 			"name": "user create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -21,7 +34,7 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "budi",
+							"value": "user 8",
 							"type": "default"
 						},
 						{
@@ -31,7 +44,7 @@
 						},
 						{
 							"key": "email",
-							"value": "asvvdxx@asdad.cbb",
+							"value": "user8@mail.com",
 							"type": "default"
 						},
 						{
@@ -43,8 +56,8 @@
 							"key": "photos",
 							"type": "file",
 							"src": [
-								"/C:/Users/rahma/Pictures/OIP.jpeg",
-								"/C:/Users/rahma/Pictures/Screenshot_1.png"
+								"/Users/rahmat/Downloads/download.jpeg",
+								"/Users/rahmat/Downloads/pexels-james-wheeler-414612.jpg"
 							]
 						},
 						{
@@ -75,12 +88,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{base_url}}/users/register",
+					"raw": "{{base_url}}/user/register",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
-						"users",
+						"user",
 						"register"
 					]
 				}
@@ -103,26 +116,23 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "budi sentosa",
+							"value": "user 6 updated 2",
 							"type": "default"
 						},
 						{
 							"key": "address",
-							"value": "asdasdasd",
-							"type": "default",
-							"disabled": true
+							"value": "address updated",
+							"type": "default"
 						},
 						{
 							"key": "email",
-							"value": "asvvdxx@asdad.cbb",
-							"type": "default",
-							"disabled": true
+							"value": "user6@mail.updated.com",
+							"type": "default"
 						},
 						{
 							"key": "password",
 							"value": "password",
-							"type": "default",
-							"disabled": true
+							"type": "default"
 						},
 						{
 							"key": "photos",
@@ -162,16 +172,21 @@
 							"value": "11/33",
 							"type": "default",
 							"disabled": true
+						},
+						{
+							"key": "user_id",
+							"value": "65f6ab8177141fe8628fabe0",
+							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{base_url}}/users",
+					"raw": "{{base_url}}/user",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
-						"users"
+						"user"
 					]
 				}
 			},
@@ -189,13 +204,35 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/users/list",
+					"raw": "{{base_url}}/user/list?of=6&lt=2&q&ob=email&sb=desc",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
-						"users",
+						"user",
 						"list"
+					],
+					"query": [
+						{
+							"key": "of",
+							"value": "6"
+						},
+						{
+							"key": "lt",
+							"value": "2"
+						},
+						{
+							"key": "q",
+							"value": null
+						},
+						{
+							"key": "ob",
+							"value": "email"
+						},
+						{
+							"key": "sb",
+							"value": "desc"
+						}
 					]
 				}
 			},
@@ -213,13 +250,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/users/list",
+					"raw": "{{base_url}}/user/65f69ca41f4740b35a420460",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
-						"users",
-						"list"
+						"user",
+						"65f69ca41f4740b35a420460"
 					]
 				}
 			},

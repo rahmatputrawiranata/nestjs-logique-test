@@ -73,29 +73,30 @@ export class UsersService {
     rows: UserDTO[];
   }> {
     const { q, ob, sb, of, lt } = params;
-    let sortBy: 'asc' | 'desc';
-    let orderBy: undefined | string;
-    const offset = of || 0;
-    const limit = lt || 30;
-    if (['asc', 'desc'].includes(sb) && ['name', 'email'].includes(ob)) {
-      sortBy = sb as typeof sortBy;
-      orderBy = ob;
-    }
     let query: any;
 
     if (q) {
       query = {
-        $or: [{ name: q }, { email: q }],
+        $or: [{ name: {
+          $regex: new RegExp(`.*${q}*.`, 'i')
+        } }, { email: {
+          $regex: new RegExp(`.*${q}*.`, 'i')
+        } }],
       };
     }
 
     const count = await this.userModel.countDocuments(query);
-    const rows = await this.userModel
-      .find(query)
-      .sort({ [orderBy]: sortBy })
-      .skip(offset)
-      .limit(limit);
+    const rowsQuery = this.userModel.find(query);
+    if (['asc', 'desc'].includes(sb) && ['name', 'email'].includes(ob)) {
+      rowsQuery.sort({[ob]: sb as 'asc' | 'desc'})
+    }
+    if(of > 0) {
+      rowsQuery.skip(of)
+    }
 
+    rowsQuery.limit(lt || 30)
+  
+    const rows = await rowsQuery
     return {
       count,
       rows: rows.map(this.mapToUserDto),
