@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { Document, HydratedDocument } from 'mongoose';
 
 export type UserCreditcardDocument = HydratedDocument<CreditCard>;
 
@@ -16,6 +16,9 @@ export class CreditCard extends Document {
 
   @Prop({ required: true })
   expired: string;
+
+  @Prop({ required: true })
+  cvv: string;
 }
 
 export const CreditCardSchema = SchemaFactory.createForClass(CreditCard);

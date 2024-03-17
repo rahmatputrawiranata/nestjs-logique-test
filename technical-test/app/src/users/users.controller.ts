@@ -7,15 +7,17 @@ import {
   ParseFilePipeBuilder,
   Patch,
   Post,
+  Query,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { RegisterDTO } from './dto/register.dto';
-import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+import { FilesInterceptor } from '@nestjs/platform-express';
 import * as multer from 'multer';
+import { UserListSearchParamDTO } from './dto/user.dto';
 
-@Controller('users')
+@Controller('user')
 export class UsersController {
   constructor(private usersService: UsersService) {}
   @Post('register-dto')
@@ -94,8 +96,8 @@ export class UsersController {
   }
 
   @Get('list')
-  async list() {
-    return await this.usersService.findAll();
+  async list(@Query() query: UserListSearchParamDTO) {
+    return await this.usersService.findAll(query);
   }
 
   @Get(':id')
@@ -110,7 +112,7 @@ export class UsersController {
     FilesInterceptor('photos', 10, {
       storage: multer.diskStorage({
         destination: './uploads/user-photos',
-        filename: (req, file, cb) => {
+        filename: (_, file, cb) => {
           const randomName = Array(32)
             .fill(null)
             .map(() => Math.round(Math.random() * 16).toString(16))
@@ -126,8 +128,6 @@ export class UsersController {
     @Body() body,
   ) {
     const { user_id, ...data } = body;
-
-    console.log(body);
     if (!user_id) {
       throw new HttpException(
         {

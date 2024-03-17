@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
-import { CreditCard } from './creditcard.schema';
+import { HydratedDocument } from 'mongoose';
+import { CreditCard, CreditCardSchema } from './creditcard.schema';
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -18,7 +18,7 @@ export class User {
   @Prop({ required: true })
   password: string;
 
-  @Prop({ type: CreditCard })
+  @Prop({ type: CreditCardSchema, required: true })
   creditcard: CreditCard;
 
   @Prop({ required: true, type: [String] })

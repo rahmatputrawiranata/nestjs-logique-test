@@ -34,7 +34,7 @@ module.exports = {
               bsonType: "object",
               description: "must be an object and is required",
               properties: {
-                type: {
+                "type": {
                   bsonType: "string",
                   description: "must be a string and is required"
                 },
@@ -49,11 +49,15 @@ module.exports = {
                 "expired": {
                   bsonType: "string",
                   description: "must be a string and is required"
+                },
+                "cvv": {
+                  bsonType: "string",
+                  description: "must be a string (3 characters) and is required"
                 }
               },
+            }
           }
         }
-      }
       }
     })
 
